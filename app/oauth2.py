@@ -3,7 +3,7 @@ from fastapi import Depends, HTTPException, status
 from jose import JWTError, jwt
 from datetime import datetime, timedelta, timezone
 from fastapi.security import OAuth2PasswordBearer
-from config import settings
+from .config import settings
 from app import schemas
 
 # generated using the bash command "openssl rand -hex 32"

@@ -13,3 +13,5 @@ api-postgres
 .vscode
 
 app/config.py
+
+.env
