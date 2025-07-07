@@ -1,9 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from schemas import Settings
+from config import settings
 
-settings = Settings()
 
 engine = create_engine(settings.database_complete_url)
 

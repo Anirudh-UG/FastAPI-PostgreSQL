@@ -11,3 +11,5 @@ uv.lock
 .venv
 api-postgres
 .vscode
+
+app/config.py

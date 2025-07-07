@@ -54,13 +54,3 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     id: Optional[int] = None
-
-
-class Settings(BaseSettings):
-    database_complete_url: str = (
-        "postgresql+psycopg://postgres:password@host.docker.internal:5432/fastapi-postgres"
-    )
-    database_username: str = "postgres"
-    database_password: str = "password"
-    database_url: str = "host.docker.internal:5432"
-    database_name: str = "fastapi-postgres"
