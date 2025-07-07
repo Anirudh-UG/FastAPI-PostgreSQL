@@ -1,19 +1,3 @@
-Ran tool
-Ran tool
-Ran tool
-Ran tool
-Read file: app/main.py
-Read file: pyproject.toml
-Read file: app/routers/post.py
-Read file: app/routers/users.py
-Read file: app/routers/auth.py
-Read file: app/schemas.py
-Read file: app/models.py
-Read file: app/database.py
-Here is a comprehensive `README.md` for your project, based on the codebase:
-
----
-
 # API-Postgres
 
 A FastAPI-based RESTful API for managing users and posts, with JWT authentication and PostgreSQL as the backend database.
