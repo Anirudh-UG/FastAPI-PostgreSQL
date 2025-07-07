@@ -1,13 +1,11 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from schemas import Settings
 
+settings = Settings()
 
-POSTGRES_DATABASE_URL = (
-    "postgresql+psycopg://postgres:password@host.docker.internal:5432/fastapi-postgres"
-)
-
-engine = create_engine(POSTGRES_DATABASE_URL)
+engine = create_engine(settings.database_complete_url)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

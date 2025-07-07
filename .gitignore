@@ -10,4 +10,4 @@ uv.lock
 # Virtual environments
 .venv
 api-postgres
-
+.vscode

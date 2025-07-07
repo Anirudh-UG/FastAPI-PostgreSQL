@@ -3,7 +3,7 @@ from .. import models, schemas, oauth2
 from sqlalchemy.orm import Session
 import logging
 from ..database import get_db
-from typing import List
+from typing import List, Optional
 
 logging.basicConfig(level=logging.INFO)
 
@@ -16,11 +16,21 @@ router = APIRouter(prefix="/posts", tags=["Posts"])
 def get_posts(
     db: Session = Depends(get_db),
     current_user: schemas.TokenData = Depends(oauth2.get_current_user),
+    limit: int = 10,
+    skip: int = 0,
+    search: Optional[str] = "",
 ):
     # cursor.execute(""" SELECT * FROM posts""")
     # posts = cursor.fetchall()
     logging.info("Data fetched")
-    posts = db.query(models.Post).filter(models.Post.owner_id == current_user.id).all()
+    posts = (
+        db.query(models.Post)
+        .filter(models.Post.owner_id == current_user.id)
+        .filter(models.Post.title.contains(search))
+        .limit(limit)
+        .offset(skip)
+        .all()
+    )  # use %20 to use spaces in URLs, particularly useful in search operations
     return posts
 
 
@@ -55,7 +65,6 @@ def get_post(
     db: Session = Depends(get_db),
     current_user: schemas.TokenData = Depends(oauth2.get_current_user),
 ):
-
     post = db.query(models.Post).filter(models.Post.id == id).first()
     # cursor.execute("""SELECT * FROM posts WHERE id = %s""", (id,))
     # post = cursor.fetchone()
